@@ -2,6 +2,8 @@ import pygame
 import sys
 from paddle import Paddle
 from ball import Ball
+from random import randint
+
 
 pygame.init()
 
@@ -10,8 +12,10 @@ black = (0,0,0)
 white = (255,255,255)
 brand = (251,80,18)
 
+width = 600
+height = 600
+size = (width,height)
 
-size = (600,600)
 game_display = pygame.display.set_mode(size)
 pygame.display.set_caption('Pong')
 
@@ -26,7 +30,7 @@ paddle2.rect.x = 550
 paddle2.rect.y = 300
 
 #ball 
-ball = Ball(black,10,10)
+ball = Ball(brand,20,20)
 ball.rect.x = 300
 ball.rect.y = 300
 
@@ -73,8 +77,8 @@ while game_on:
     if keys[pygame.K_DOWN]:
         paddle2.paddles_move_down(7)
 
-# sprite behaviour - ball
-    if ball.rect.x >= 600:
+# sprite behaviour - ball-bounds
+    if ball.rect.x >= 555:
         score1 += 1
         scoring_sound1.play()
         ball.velocity[0] = ball.velocity[0]
